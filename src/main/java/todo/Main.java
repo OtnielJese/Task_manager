@@ -25,5 +25,20 @@ public class Main {
         System.out.println(t1);
         System.out.println(t2);
 
+        TaskRepository repo = new TaskRepository();
+        repo.save(t1);
+        repo.save(t2);
+
+        System.out.println("\nRepo - todas:");
+        System.out.println(repo.findAll());
+
+        t1.complete(); repo.save(t1);
+        System.out.println("\nRepo - completadas");
+        System.out.println(repo.findByStatus(true));
+
+        repo.deleteById(2);
+        System.out.println("\nRepo - tras borrar id=2:");
+        System.out.println(repo.findAll());
     }
+
 }
